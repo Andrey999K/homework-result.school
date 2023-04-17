@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 const Counter = (props) => {
-    const {value} = props;
+    const {value, id, name, onIncrement, onDecrement, onDelete} = props;
     const formatValue = () => {
         return value === 0 ? 'empty' : value;
     };
@@ -12,11 +12,11 @@ const Counter = (props) => {
 
     return (
       <div>
-        <span>{props.name}</span>
-        <button className="btn btn-primary btn-sm m-2" onClick={() => props.onDecrement(props.id)}>-</button>
+        <span>{name}</span>
+        <button className="btn btn-primary btn-sm m-2" onClick={() => onDecrement(id)}>-</button>
         <span className={getBageClasses()}>{formatValue()}</span>
-        <button className="btn btn-primary btn-sm m-2" onClick={() => props.onIncrement(props.id)}>+</button>
-        <button className="btn btn-danger btn-sm m-2" onClick={() => props.onDelete(props.id)}>Delete</button>
+        <button className="btn btn-primary btn-sm m-2" onClick={() => onIncrement(id)}>+</button>
+        <button className="btn btn-danger btn-sm m-2" onClick={() => onDelete(id)}>Delete</button>
       </div>
     );
 }

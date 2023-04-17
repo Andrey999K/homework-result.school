@@ -27,7 +27,7 @@ const CounterList = () => {
 
   const handleDecrement = (id) => {
     const updatedCounters = counters.map(counter => {
-      if (counter.id === id) return {...counter, value: counter.value - 1}
+      if (counter.id === id) return counter.value - 1 >= 0 ? {...counter, value: counter.value - 1} : counter;
       else return counter;
     });
     setCounters(updatedCounters);
@@ -39,7 +39,9 @@ const CounterList = () => {
         <Counter
           key={count.id}
           onDelete={handleDelete}
-          {...count}
+          id={count.id}
+          value={count.value}
+          name={count.name}
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
         />
